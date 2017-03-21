@@ -8,6 +8,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    - if flash[:notice]
+      #notice
+        = notice
     %h1
       = @page_title if @page_title
     = yield

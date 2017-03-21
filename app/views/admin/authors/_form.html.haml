@@ -1,0 +1,13 @@
+- if @author.errors.any?
+  #error_explanation
+    %h2
+      = "#{pluralize(@author.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @author.errors.full_messages.each do |msg|
+          %li= msg
+%p
+  =label_tag :first_name, "First name: "
+  =text_field_tag :first_name, @author.first_name
+%p
+  =label_tag :last_name, "Last name: "
+  =text_field_tag :last_name, @author.last_name

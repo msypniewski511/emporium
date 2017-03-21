@@ -1,0 +1,6 @@
+%fieldset
+  %legend Enter author details:
+  =form_tag(admin_author_path(id: @author.id), method: 'PUT') do
+    = render(partial: 'form')
+    = submit_tag("Edit author!")
+  =link_to "Back", admin_authors_path

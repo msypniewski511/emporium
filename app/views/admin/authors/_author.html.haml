@@ -1,0 +1,7 @@
+%tr
+  %td
+    = link_to("#{author.name}", admin_author_path(id: author.id))
+  %td
+    = link_to("Edit", edit_admin_author_path(id: author.id))
+  %td 
+    = button_to("Delete", admin_author_path(id: author.id), data: {confirm: "Are you sure to delete author #{author.name} ?"}, method: :delete)

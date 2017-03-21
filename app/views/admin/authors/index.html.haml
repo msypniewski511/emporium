@@ -1,0 +1,7 @@
+%table
+  %tr
+    %th Name
+    %th Edit
+    %th Delete
+  = render partial: 'author', collection: @authors
+= link_to 'Add new author', new_admin_author_path

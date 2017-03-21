@@ -1,0 +1,11 @@
+%table
+  %tr
+    %td First Name:
+    %td= @author.first_name
+  %tr
+    %td Last name:
+    %td= @author.last_name
+%p
+  =link_to "Edit", edit_admin_author_path, id: @author.id
+  |
+  =link_to "Back", admin_authors_path
