@@ -3,6 +3,7 @@
 %table
   %thead
     %tr
+      %th Name
       %th
       %th
       %th
@@ -10,6 +11,7 @@
   %tbody
     - @admin_publishers.each do |admin_publisher|
       %tr
+        %td= admin_publisher.name
         %td= link_to 'Show', admin_publisher
         %td= link_to 'Edit', edit_admin_publisher_path(admin_publisher)
         %td= link_to 'Destroy', admin_publisher, :method => :delete, :data => { :confirm => 'Are you sure?' }
