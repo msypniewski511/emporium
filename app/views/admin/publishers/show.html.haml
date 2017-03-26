@@ -1,9 +1,11 @@
-%p#notice= notice
-
 %p
-  %b Name:
-  = @admin_publisher.name
-
-= link_to 'Edit', edit_admin_publisher_path(@admin_publisher)
-\|
-= link_to 'Back', admin_publishers_path
+  %table
+    %tr
+      %th Name:
+    %tr
+      %td= @admin_publisher.name
+    %tr
+      %td
+        = link_to 'Edit', edit_admin_publisher_path(@admin_publisher)
+        \|
+        = link_to 'Back', admin_publishers_path

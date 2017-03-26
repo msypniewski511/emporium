@@ -1,8 +1,10 @@
-require 'test_helper'
 
+require File.dirname "admin/publishers.yml"
+require 'test_helper'
 class Admin::PublishersControllerTest < ActionDispatch::IntegrationTest
+  fixtures 'admin/publishers'
   setup do
-    @admin_publisher = admin_publishers(:one)
+    @admin_publisher = Admin::Publisher.first
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class Admin::PublishersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create admin_publisher" do
     assert_difference('Admin::Publisher.count') do
-      post admin_publishers_url, params: { admin_publisher: { name: @admin_publisher.name } }
+      post admin_publishers_url, params: { admin_publisher: { name: @admin_publisher.name + "dodane" } }
     end
 
     assert_redirected_to admin_publisher_url(Admin::Publisher.last)
@@ -26,6 +28,9 @@ class Admin::PublishersControllerTest < ActionDispatch::IntegrationTest
   test "should show admin_publisher" do
     get admin_publisher_url(@admin_publisher)
     assert_response :success
+    assert_template 'admin/publishers/show'
+    assert assigns(:admin_publisher).valid?
+    assert_select 'h1', Admin::Publisher.first.name
   end
 
   test "should get edit" do
@@ -34,8 +39,10 @@ class Admin::PublishersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update admin_publisher" do
-    patch admin_publisher_url(@admin_publisher), params: { admin_publisher: { name: @admin_publisher.name } }
+    patch admin_publisher_url(@admin_publisher), params: { admin_publisher: { name: "New name" } }
     assert_redirected_to admin_publisher_url(@admin_publisher)
+    @admin_publisher.reload
+    assert_equal 'New name', @admin_publisher.name
   end
 
   test "should destroy admin_publisher" do

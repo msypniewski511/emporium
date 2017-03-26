@@ -8,9 +8,46 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if flash[:notice]
-      #notice
-        = notice
-    %h1
-      = @page_title if @page_title
-    = yield
+    #header
+      %h1#logo Emporium&trade;
+      %h2#slogan Books on Rails
+      %p#loginlogout
+        /-if current_user
+        /  = "Logged in as"
+        /  = current_user.login(link_to "Logout", :controller => "/account", :action => "logout") 
+        /-else
+        /  = link_to "Login", :controller => "/account", :action => "login"
+
+    #menu
+      %ul
+        %li
+          %a{href: "/admin/authors"}Authors
+          &nbsp;|&nbsp;
+        %li
+          %a{href: "/admin/publishers"}Publishers
+          &nbsp;|&nbsp;
+        %li
+          %a{href: "/admin/books"}Books
+          &nbsp;|&nbsp;
+        %li
+          %a{href: "/tag/list"}Tags
+          &nbsp;|&nbsp;
+        %li
+          %a{href: "/"}Catalog
+          &nbsp;|&nbsp;
+        %li
+          %a{href: "/about"}About
+          &nbsp;
+  
+    #content
+      %h1
+        = @page_title if @page_title
+      - if flash[:notice]
+        #notice
+          = flash[:notice]
+      = yield
+
+    #footer &copy; 1995-2006 Emporium by Msypniewski511
+
+
+

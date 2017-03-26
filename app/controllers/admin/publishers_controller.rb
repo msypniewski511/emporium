@@ -10,6 +10,7 @@ class Admin::PublishersController < ApplicationController
   # GET /admin/publishers/1
   # GET /admin/publishers/1.json
   def show
+    @page_title = @admin_publisher.name
   end
 
   # GET /admin/publishers/new
