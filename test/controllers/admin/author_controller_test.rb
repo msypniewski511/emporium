@@ -8,6 +8,8 @@ class Admin::AuthorControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'admin/authors/new'
     assert_select 'h1', 'Create new author'
+    assert_select "form[action='/admin/authors']"
+    assert_select "form[method='post']"
   end
 
   test "should get create" do

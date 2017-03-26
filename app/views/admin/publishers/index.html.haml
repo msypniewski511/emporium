@@ -1,0 +1,19 @@
+%h1 Listing admin_publishers
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @admin_publishers.each do |admin_publisher|
+      %tr
+        %td= link_to 'Show', admin_publisher
+        %td= link_to 'Edit', edit_admin_publisher_path(admin_publisher)
+        %td= link_to 'Destroy', admin_publisher, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Publisher', new_admin_publisher_path
