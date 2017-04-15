@@ -1,0 +1,29 @@
+%p
+  %table
+    %tr
+      %th Title
+      %th Publisher
+      %th Authors
+      %th Published at
+      %th isbn
+      %th Page count
+      %th Price 
+    %tr
+      %td= @book.title
+      %td= Admin::Publisher.find(@book.publisher_id).name
+      - unless @book.authors.blank?
+        %td= @book.authors.first.name
+      - else
+        %td Brak authora
+      - unless @book.published_at.blank?
+        %td= @book.published_at.strftime("%Y-%m-%d")
+      - else
+        %td Brak daty
+      %td= @book.isbn
+      %td= @book.page_count
+      %td= @book.price
+    %tr
+      %td
+        = link_to 'Edit', edit_admin_book_path(@book)
+        \|
+        = link_to 'Back', admin_books_path

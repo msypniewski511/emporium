@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :publishers
   end
+  post 'admin/books', to: 'admin/books#create', as: 'books'
   namespace :admin do
-    resources :authors
+    resources :authors, :books
   end
+
+
 
   root 'welcome#index'
   get '/about', to: 'welcome#about'
