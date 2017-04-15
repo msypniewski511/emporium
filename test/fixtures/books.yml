@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  title: Pro Rails E-Commerce
+  publisher_id: 1
+  published_at: 2017-03-26 11:59:32
+  isbn: 199-199-199-1
+  blurb: MyText
+  page_count: 1
+  price: 1.5
+
+two:
+  id: 2
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 1
+  published_at: 2017-03-26 11:59:32
+  isbn: 199-199-199-2
+  blurb: MyText
+  page_count: 1
+  price: 1.5
