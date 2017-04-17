@@ -23,6 +23,8 @@
       %td= @book.page_count
       %td= @book.price
     %tr
+      %td= image_tag @book.cover_image
+    %tr
       %td
         = link_to 'Edit', edit_admin_book_path(@book)
         \|

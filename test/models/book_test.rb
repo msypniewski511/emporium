@@ -7,7 +7,7 @@ class BookTest < ActiveSupport::TestCase
   test "should fail create without vailid attrybuties" do
   	book = Book.new
   	assert_not book.save
-  	assert_equal 9, book.errors.size
+  	assert_equal 10, book.errors.size
   	assert book.errors[:title].any?
   	assert book.errors[:publisher].any?
   	assert book.errors[:authors].any?

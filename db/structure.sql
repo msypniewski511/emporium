@@ -132,7 +132,8 @@ CREATE TABLE books (
     page_count integer,
     price double precision,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    cover_image character varying
 );
 
 
@@ -260,6 +261,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170323003203'),
 ('20170326075525'),
 ('20170326095932'),
-('20170326111913');
+('20170326111913'),
+('20170417042805');
 
 

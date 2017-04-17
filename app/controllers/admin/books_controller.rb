@@ -15,6 +15,7 @@ class Admin::BooksController < ApplicationController
 
   # GET /admin/publishers/new
   def new
+    load_date
     @book = Book.new
     @page_title = "Nowa ksiazka"
   end
@@ -33,6 +34,7 @@ class Admin::BooksController < ApplicationController
         format.html { redirect_to admin_books_path(@book), notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
+        load_date
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -71,6 +73,11 @@ class Admin::BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :publisher_id, :author_ids, :published_at, :isbn, :page_count, :price)
+      params.require(:book).permit(:title, :publisher_id, :published_at, :isbn, :page_count, :price, :cover_image, :author_ids => [])
+    end
+
+    def load_date
+      @authors = Author.all
+      @publishers = Admin::Publisher.all
     end
 end

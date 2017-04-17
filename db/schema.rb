@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326111913) do
+ActiveRecord::Schema.define(version: 20170417082732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,15 +34,22 @@ ActiveRecord::Schema.define(version: 20170326111913) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string   "title",        limit: 255, null: false
-    t.integer  "publisher_id",             null: false
+    t.string   "title",                limit: 255, null: false
+    t.integer  "publisher_id",                     null: false
     t.datetime "published_at"
-    t.string   "isbn",         limit: 13
+    t.string   "isbn",                 limit: 13
     t.text     "blurb"
     t.integer  "page_count"
     t.float    "price"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "cover_image"
+    t.string   "name"
+    t.string   "description"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_foreign_key "authors_books", "authors", name: "fk_bk_authors", on_delete: :cascade

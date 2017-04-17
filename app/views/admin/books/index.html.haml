@@ -8,6 +8,7 @@
       %th isbn
       %th Page count
       %th Price
+      %th Image
 
   %tbody
     - @books.each do |book|
@@ -15,7 +16,10 @@
         %td= book.title
         %td= Admin::Publisher.find(book.publisher_id).name
         - unless book.authors.blank?
-          %td= book.authors.first.name
+          %td
+            - book.authors.each do |a|
+              = a.name
+              %br
         - else
           %td Brak authora
         - unless book.published_at.blank?
@@ -25,6 +29,10 @@
         %td= book.isbn
         %td= book.page_count
         %td= book.price
+        -unless(book.cover_image == nil) then
+          %td= image_tag(book.cover_image)
+        -else
+          %td= "Brak obrazu"
 
         %td= link_to 'Show', admin_book_path(book)
         %td= link_to 'Edit', edit_admin_book_path(book)
