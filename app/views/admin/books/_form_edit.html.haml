@@ -1,4 +1,4 @@
-= form_for @book, url: :admin_book, multipart: true do |f|
+= form_for @book, url: :admin_book do |f|
   - if @book.errors.any?
     #error_explanation
       %h2= "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
@@ -13,8 +13,8 @@
     = f.label :publisher_id
     = f.collection_select(:publisher_id, Admin::Publisher.all, :id, :name)
   .field
-    = f.label :authors
-    = f.collection_select(:author_ids, Author.all, :id, :name)
+    = f.label :author_ids, 'Authors'
+    = f.select :author_ids, options_from_collection_for_select(@authors, :id, :name), {}, multiple: true, size: 5
   .field
     = f.label :published_at
     = f.date_select :published_at
@@ -23,7 +23,7 @@
     = f.text_field :isbn
   .field
     = f.label :blurb
-    = f.text_field :blurb
+    = f.text_area :blurb
   .field
     = f.label :page_count
     = f.number_field :page_count
@@ -32,6 +32,6 @@
     = f.text_field :price
   .field
     = f.label :book_cover_image
-    = f.file_field :cover_image
+    = f.file_field :picture
   .actions
     = f.submit 'Save'

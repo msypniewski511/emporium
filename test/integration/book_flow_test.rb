@@ -18,12 +18,19 @@ class BookFlowTest < ActionDispatch::IntegrationTest
   	  page_count: 300,
   	  price: 100
   	}
+    maciej.list_books
   end
 
   private
 
   module BookTestDSL
   	attr_writer :name
+
+    def list_books
+      get admin_books_path
+      assert_response :success
+      assert_template 'admin/books/index'
+    end
 
   	def add_book(parameters)
       author = Author.first

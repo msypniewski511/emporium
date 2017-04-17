@@ -6,6 +6,7 @@
       %th Authors
       %th Published at
       %th isbn
+      %th Blurb
       %th Page count
       %th Price 
     %tr
@@ -22,8 +23,10 @@
       %td= @book.isbn
       %td= @book.page_count
       %td= @book.price
-    %tr
-      %td= image_tag @book.cover_image
+    -unless @book.picture.nil?
+      %tr
+        %td= image_tag(@book.picture)
+        %td= textilize @book.blurb
     %tr
       %td
         = link_to 'Edit', edit_admin_book_path(@book)

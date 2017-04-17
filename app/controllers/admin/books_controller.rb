@@ -2,9 +2,16 @@ class Admin::BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
 
+  def list
+    @page_title = 'Listing books'
+    sort_by = params[:sort_by]
+    @book_pages, @books = paginate :books, :order => sort_by, :per_page => 10
+  end
+
   def index
-    @books = Book.all
-    @page_title = "Lista tytulow"
+    @page_title = 'Listing books'
+    sort_by = params[:sort_by]
+    @books = Book.order(sort_by).paginate :page => params[:page], :per_page => 10
   end
 
   # GET /admin/publishers/1
@@ -22,6 +29,7 @@ class Admin::BooksController < ApplicationController
 
   # GET /admin/publishers/1/edit
   def edit
+    load_date
   end
 
   # POST /admin/publishers
@@ -73,7 +81,7 @@ class Admin::BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :publisher_id, :published_at, :isbn, :page_count, :price, :cover_image, :author_ids => [])
+      params.require(:book).permit(:title, :publisher_id, :published_at, :isbn, :page_count, :price, :blurb, :cover_image, :picture, :author_ids => [])
     end
 
     def load_date

@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'rack-cors'
 gem "paperclip"
 gem 'file-column', '~> 0.3.2'
+gem 'will_paginate'
+gem 'textilize', '~> 0.0.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
