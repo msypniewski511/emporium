@@ -111,7 +111,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.20.0)
-    puma (3.8.2)
+    puma (3.12.6)
     rack (2.0.1)
     rack-cors (0.4.1)
     rack-test (0.6.3)
@@ -206,7 +206,7 @@ DEPENDENCIES
   minitest-reporters
   paperclip
   pg (~> 0.18)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rack-cors
   rails (~> 5.0.2)
   rails-controller-testing
